@@ -12,26 +12,26 @@ Public health data is republished on a schedule, and each release can change the
 
 ## In class
 
-- Show and explain: one agent failure each, and why it happened.
+- Show and explain: four or five of you show one agent failure, and why it happened.
 - Concept: release schedules, what changes between releases, and rerunning checks.
-- Breakouts: refresh one source together and compare the before and after row counts.
+- Breakouts: run the comparison together and read the before-and-after checks.
 
 ## Your one required deliverable
 
-**Refresh one source**, rerun your checks, and write a short **change report**: what changed (periods, row counts, measures, values), which checks still pass, and whether any number in your app changed.
+**Refresh one source**, rerun your checks, and write a short **change report**: which source you refreshed (with its provenance row), the before-and-after checks table, what changed (periods, row counts, values, suppression), and what the changes mean for your app. If you used the simulated snapshot, say so, and say when you'll rerun it on a real refresh.
 
 ## Steps
 
-1. Run the [week 12 notebook](../notebooks/week12_refresh.py) and choose the source to refresh.
-2. Update its [provenance record](../templates/provenance_record.md) with the new download date and data period.
-3. Ask your AI tool to compare versions:
-   > I have two versions of the same public file loaded in marimo as old and new. Compare them: row counts, columns added or removed, distinct values in the period columns, and for rows with the same key, how many values changed. Show counts, not just a summary.
-4. Rerun your join log, your three traces, the compliance checklist and your ten test questions.
-5. Write the change report, with AI help if you want, and check every number in it against your rerun checks.
+1. Run the [week 12 notebook](../notebooks/week12_refresh.py). The **current** version is your layer rebuilt now from the sources the course loads today.
+2. **Section 1.** Check `obtained_from` and `loaded_at` in the provenance table. "local cache" means a copy saved earlier in the `data` folder; delete that folder and rerun to force a fresh copy, and ask your instructor when the course copy was last refreshed.
+3. **Section 2, the earlier version.** Upload your week 3 export (`aggregator_<measure>.csv`); the notebook then rebuilds the current layer the same way, so like is compared with like. With no upload, it uses a **SIMULATED** earlier snapshot with documented, made-up changes, and the diff should find exactly those.
+4. Read **section 3** (the week 3 checks, before and after) and **section 4** (what changed: rows added and removed, columns, period changes, score changes, new suppression, newly published).
+5. **Section 5.** Decide what each change means for your app, your week 5 defense and your data card. The **Ask your AI** box can draft a "what changed" note; check every number in it against the tables.
+6. Update your [provenance record](../templates/provenance_record.md) with the new download date and data period. Rerun your three traces, compliance checklist and ten test questions where anything changed.
 
 ## The check to run before you submit
 
-Did your join's **row counts** change after the refresh? If they did, can you explain every difference?
+Pick one hospital from **"Hospitals whose score changed"** (or **"New suppression"**) and confirm its current value on the source page yourself.
 
 ## Human sign-off
 

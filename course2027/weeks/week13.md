@@ -12,7 +12,7 @@ Review the **work**, not the person. Use the same standard you've used all term:
 
 ## In class
 
-- Show and explain: one change report each from week 12.
+- Show and explain: four or five of you show your week 12 change report.
 - You'll be paired with a classmate and swap app links, data cards and join logs.
 - Breakouts: review in pairs, then talk through your findings face to face.
 

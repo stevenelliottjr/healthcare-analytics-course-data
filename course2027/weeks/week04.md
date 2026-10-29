@@ -15,28 +15,27 @@ Suppose your layer says a Connecticut county has an adult diabetes estimate of s
 
 ## In class
 
-- Show and explain: one join log each. What disappeared, and why?
+- Show and explain: four or five of you show a join ledger. What disappeared, and why?
 - Concept: tracing a number; common file defects; why "Not Available" is not zero.
 - Breakouts: hunt for planted errors in a practice file together.
 
 ## Your one required deliverable
 
-1. **Trace three numbers** from your layer back to the source file: file, key, column, and value in both places.
-2. **Find the planted errors** in the provided practice file (`lab03_hospitals.csv`, loaded in the notebook). List each one with the row and what's wrong.
+1. **Trace three numbers** from your layer back to the source file: file, line, column, raw text, and reporting period.
+2. **Find the planted errors** in the provided practice file (`lab03_hospitals.csv`, loaded in the notebook). For each kind of error: what is wrong, how many rows, how you found it, and what it would break.
 
 ## Steps
 
 1. Run the [week 4 notebook](../notebooks/week04_verify_sourcing.py).
-2. Pick three numbers from your layer, ideally one from each source. For each, ask:
-   > In marimo, load the original [source] file and show me the single row where [key] = [value], with only the [column] column. Don't transform anything.
-3. Compare the values yourself and write them side by side.
-4. For the practice file, ask your AI tool for help **finding**, not deciding:
-   > Write checks for this hospital file: duplicate IDs, IDs that aren't 6 characters, ZIP codes that lost leading zeros, numeric columns that contain text, and values outside a plausible range. Show the rows each check flags. Don't fix anything.
-5. Look at each flagged row and decide: is it a real error or a legitimate oddity? Write that down.
+2. **Part A, trace.** Choose the **Source file** (Unplanned Hospital Visits or HRRP), **State**, **Hospital**, **Measure** and **Column**. The notebook shows the number as it sits in your layer next to the source row (file, line in the file, raw text, period, footnote), plus a state average and every row behind it. Copy the trace block it gives you. Do this three times, using hospitals and measures from your layer.
+3. For a number Part A doesn't cover (a PLACES or ACS value, for example), use the **Ask your AI** box under Part A, then open the file yourself at that line.
+4. **Part B, planted errors.** Use the five tools: **1** row counts, **2** Facility IDs that appear more than once, **3** format check (pick a column), **4** value distribution side by side (pick a column), **5** compare one hospital to the clean file (type a Facility ID exactly as it appears). The tools find things; you decide what each one means.
+5. Remember that duplicate rows also change the counts in Tool 4. Which differences are *not* explained by duplicates?
+6. Write your findings in the **My findings** box. AI can help you word them, but each one must be something you can explain live.
 
 ## The check to run before you submit
 
-For each traced number, does the value match **exactly**, including decimals and units? If it doesn't, explain where it changed.
+For one of your three traces, open the source CSV yourself at the line number shown and read the raw text with your own eyes. Does it match **exactly**, including decimals? If it doesn't, explain where it changed.
 
 ## Human sign-off
 
@@ -47,6 +46,7 @@ For each traced number, does the value match **exactly**, including decimals and
 ## Power-ups (optional)
 
 - Ask a second AI tool (or a fresh session) to look for planted errors independently, then compare its list with yours. What did each of you miss?
+- Use the notebook's second **Ask your AI** box to turn your findings into a `check(df)` cell that fails on the practice file and passes on the clean one.
 - Turn your three traces into a cell that re-checks them automatically every time the notebook runs.
 
 ## Reading

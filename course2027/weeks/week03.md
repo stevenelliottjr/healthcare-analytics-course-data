@@ -8,30 +8,32 @@ A hospital file lists counties by *name*, while CDC county data uses five-digit 
 
 ## The idea
 
-Your **aggregator** is one table at one **grain** (one row per hospital, or one row per county), built by joining your sources on a shared key. A join is where numbers quietly vanish or multiply, so after every join you record **row counts before and after** and explain any difference. This is the one week where reading the code is the lesson. The notebook shows the join and explains each line.
+Your **aggregator** is one table at one **grain**, built by joining your sources on a shared key. In the course notebook the grain is **one row per hospital**: county measures are attached to each hospital through the crosswalk. A join is where numbers quietly vanish or multiply, so after every join you record **row counts before and after** and explain any difference. This is the one week where reading the code is the lesson. The notebook shows the join and explains each line.
 
 ## In class
 
-- Show and explain: one provenance record each, focusing on the data period.
+- Show and explain: four or five of you show a provenance record, focusing on the data period.
 - Concept: grain, keys, the four outcomes of a join (matched, unmatched left, unmatched right, duplicated).
 - Breakouts: build the layer together, step by step, in the notebook.
 
 ## Your one required deliverable
 
-A joined table at **one grain**, built from your 2–3 sources, with a clear **key for every join** (the hospital ID, or the crosswalk from hospital to county), plus a short **join log**: for each join, the row count before, the row count after, and one sentence explaining any change.
+A joined table at **one grain** (one row per hospital), built from your 2–3 sources, with a clear **key for every join** (the Facility ID, or the crosswalk from hospital to county), plus the **join ledger**: for each join, the row count, the rows matched, and one sentence explaining any gap. Submit the layer CSV and the join ledger CSV from the notebook's Export section.
 
 ## Steps
 
-1. Run the [week 3 notebook](../notebooks/week03_build_aggregator.py) and follow the guided join. Decide your grain (one row per hospital, or per county) before you start.
-2. Swap in your own sources. Ask your AI tool:
-   > In this marimo notebook, join [source A] to [source B] on [key]. Use a left join so I keep every [hospital/county]. Before and after the join, print the row count. Then print how many rows did not find a match, and show five of them.
-3. Ask it to check that the grain held:
-   > Check whether [key] is still unique after the join. If any value appears more than once, show me those rows and explain why.
-4. Look at the unmatched rows yourself. Are they territories, typos, or Connecticut? Write your join log.
+1. Run the [week 3 notebook](../notebooks/week03_build_aggregator.py). Keep it: every later week starts from the layer it builds.
+2. Make your choices under **Your choices**: the **Unplanned-visits measure**; whether to keep only hospitals with a numeric score (the one step that removes rows); **Join HRRP for the same condition**; the **CDC PLACES county measures** and **PLACES value type** (crude or age-adjusted); and the **ACS county measures**. Clear both county lists for a hospital-only layer.
+3. Read the build code and open **"What each line does"**. This is the one week where reading code is the lesson.
+4. Read the **Join ledger**: rows should stay the same at every join; *rows matched* shows what each source actually supplied.
+5. Open the **"What didn't match, and why"** tabs: hospitals with no row for the measure, rows with text instead of a number, HRRP gaps, hospitals with no county FIPS, and counties not in PLACES (Connecticut is one). Check the source pages before you explain them.
+6. Set **"Lowest key match rate I will accept"** and read every FAIL in the checks table. Fix the layer, or keep your bar and say why in your submission.
+7. Under **Export**, download the layer (`aggregator_<measure>.csv`, for example `aggregator_READM_30_HF.csv`) and `join_ledger.csv`. Save the layer file: you'll upload it again in weeks 7, 8, 10 and 12.
+8. To add a source the notebook doesn't offer, use the **Ask your AI** box at the bottom of the notebook.
 
 ## The check to run before you submit
 
-Is your key **still unique** after the last join? If you started with one row per hospital, you should still have one row per hospital.
+Pick one row of the ledger where *rows matched* is lower than *rows*, and say in one sentence who didn't match and why. Then confirm the checks table still says **one row per hospital (unique key)**.
 
 ## Human sign-off
 

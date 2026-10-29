@@ -16,7 +16,7 @@ The CMS HRRP file prints "Too Few to Report" instead of a count when a hospital 
 
 ## In class
 
-- Show and explain: one data card and app sketch each.
+- Show and explain: four or five of you show your data card and app sketch.
 - Concept: PHI vs. public aggregate data; why suppression exists; what you may paste into an AI tool.
 - Breakouts: run the checklist on one classmate's layer, then on your own.
 
@@ -26,16 +26,16 @@ Pass the [compliance checklist](../templates/compliance_checklist.md) on your la
 
 ## Steps
 
-1. Run the [week 7 notebook](../notebooks/week07_compliance.py). It walks through the checklist on the course data.
-2. To check your own layer, ask:
-   > Write a marimo cell that lists every column in my table with its type and five example values, so I can confirm none of them describes an individual person.
-   > For each column that came from a suppressed field ("Too Few to Report", "Not Available", "N/A"), count the rows that are still text and confirm none were converted to numbers. Show the counts.
-3. Review your AI transcripts from weeks 1–6. Did anything go into the tool that shouldn't have? Note it honestly on the checklist.
-4. Sign the checklist yourself.
+1. Run the [week 7 notebook](../notebooks/week07_compliance.py). Try it first on the example layer (HRRP joined to hospital information) to see what each check does.
+2. Under **"Run the checklist on"**, choose **My exported CSV** and upload your week 3 export (`aggregator_<measure>.csv`).
+3. Read the four checks: **1 Identifiers** (hospital names, addresses and phones are public facts about a facility; anything about a patient fails), **2 Small cells** (counts below the **small-cell threshold** slider), **3 Suppression markers preserved**, and **4 What you may give an AI tool** (a credential scan plus three boxes you tick yourself).
+4. The slider starts at 11 to match what the HRRP file shows. CMS's suppression convention is described in the notebook; confirm the current policy before you cite any number.
+5. Fix or explain every FAIL or CHECK in the summary table. To fix one, use the notebook's **Ask your AI** box, pasting only column names and the check result.
+6. Copy the summary into the full [compliance checklist](../templates/compliance_checklist.md). Review your AI transcripts from weeks 1–6 for section C, note anything you shouldn't have shared honestly, and sign it yourself.
 
 ## The check to run before you submit
 
-Search your layer and your app for any number in a place where the source file shows "Too Few to Report" or "Not Available". There should be none.
+Open your exported CSV and find one value the source suppressed ("Too Few to Report", "Not Available"). Is it still there as text, or did it become a blank or a zero? You'll run the same check on your app before week 8.
 
 ## Human sign-off
 

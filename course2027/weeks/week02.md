@@ -14,26 +14,26 @@ Before you use a source, write down its **provenance**: who published it, what o
 
 ## In class
 
-- Show and explain: week 1 charts and questions.
+- Show and explain: four or five of you show your week 1 chart and question.
 - Concept: provenance, grain, data period vs. release date, relevance to your question.
 - Breakouts: fill in a provenance record together for one source.
 
 ## Your one required deliverable
 
-Choose **2–3 sources** that could answer your week 1 question, and complete one [provenance record](../templates/provenance_record.md) for each.
+Choose **2–3 sources** that could answer your week 1 question, and complete one [provenance record](../templates/provenance_record.md) for each. The form at the bottom of the notebook produces one record per source.
 
 ## Steps
 
-1. Run the [week 2 notebook](../notebooks/week02_sources.py). It lists each course source with its publisher, grain and key.
-2. Choose your sources. Ask your AI tool to help you think, but you make the decision:
+1. Run the [week 2 notebook](../notebooks/week02_sources.py). The **Source cards** tabs give each course source's publisher, grain, join key, row count, source page, and a reporting period computed from the data itself.
+2. Read the four lessons: one file with five different periods (Unplanned Hospital Visits); HRRP vs. Unplanned Visits readmissions covering different years; release year vs. data year (PLACES and ACS); and Connecticut's planning regions.
+3. Choose your sources. Ask your AI tool to help you think, but you make the decision:
    > I want to answer: "[your question]". My options are CMS Hospital General Information, CMS Unplanned Hospital Visits, CMS HRRP, CDC PLACES county data, and CDC ACS county measures. For each, tell me what one row represents and what it could and could not tell me about my question. Don't recommend one yet.
-3. Find each source's data period in the file or on its official page, not from the AI. Then ask:
-   > Write a marimo cell that shows the distinct values of the period or date columns in this dataframe, with a count of rows for each.
-4. Fill in a provenance record for each source.
+4. Pick them in **"Sources for my aggregator (choose 2–3)"**. Choose first: changing the selection clears the form.
+5. In each form, check the pre-filled facts and write the judgment fields yourself: why it's relevant, whether it's recent enough, known gaps, and what you checked. Then copy the records or use **Download as .md** (`provenance_records.md`).
 
 ## The check to run before you submit
 
-For each source, are the **data period** and the **download date** two different fields, and did you get the period from the file or the publisher's page yourself?
+For one source, open its source page and confirm the **reporting period** yourself. Does it match what the notebook computed from the data? If not, write down which one you believe and why. Also check that the period and the date you downloaded the data are two different fields.
 
 ## Human sign-off
 
@@ -44,7 +44,7 @@ For each source, are the **data period** and the **download date** two different
 ## Power-ups (optional)
 
 - Look up one source outside the course list (a state health department dataset, for example) and write a provenance record for it. Confirm it's public and aggregate before you load it anywhere.
-- List every period that appears inside the Unplanned Hospital Visits file. The measures in it do not all share one period.
+- Use the notebook's **Ask your AI** box to profile a source the notebook doesn't cover (rows, likely keys, date columns, missing-value text), then check one of its answers against the source page.
 
 ## Reading
 

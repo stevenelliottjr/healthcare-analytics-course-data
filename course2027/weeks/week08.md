@@ -24,13 +24,14 @@ Graded with the [app rubric](../templates/app_rubric.md) (midterm column).
 
 ## Steps
 
-1. Start from the [week 8 app starter](../notebooks/week08_app_starter.py). It's a small working app on the course data, with its provenance shown.
-2. Point it at your own layer:
-   > Here is my marimo app starter and my aggregator cell. Replace the example data with my table. Keep the provenance panel visible on the main screen. Add one dropdown that filters by [state / county / hospital type]. Under the chart, show "n = [rows shown] of [total rows]; [excluded] excluded because [reason]".
-3. Ask for an honest review:
+1. Start from the [week 8 app starter](../notebooks/week08_app_starter.py). It has the four parts every app in this course needs: filters, a chart, the table of rows behind the chart, and an always-visible **"Where these numbers came from"** panel (sources, reporting periods, rows shown out of how many, and why the rest were left out).
+2. **Choose your layer.** Option A, the course default layer, lets you swap the **CMS measure** and the **CDC PLACES county measure**. Option B: upload your week 3 export (`aggregator_<measure>.csv`) and the app uses it instead.
+3. Set the controls: **Number to chart**, **Compare against** (or a histogram), **States** and **Hospital types**. Read the panel: do the row counts add up, and do you agree with every exclusion reason?
+4. Make it answer *your* question with the notebook's **Ask your AI** prompts (change the chart, add a filter, choose the period columns). After every change, check that the panel's row counts still add up and one number in the table still matches the source file.
+5. Ask for an honest review:
    > Look at this app as a hospital board member who doesn't code. What would confuse you? What would you not trust? List problems only; don't fix them.
-4. Fix what matters. Then rehearse: pick one number on screen and trace it to the source file in under a minute.
-5. Open the shared link in a private browser window to make sure it works.
+6. Fix what matters. Then rehearse: pick one number on screen and trace it to the source file in under a minute.
+7. Share it as an app (section 3 of the notebook: in molab, **"Run as app"** from the share button; locally, `marimo run`). Open the link in a private browser window to make sure it works.
 
 ## The check to run before you submit
 
