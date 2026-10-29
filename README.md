@@ -24,9 +24,9 @@ goes into any AI tool; no PHI, ever.
 
 ## The data
 
-Every course notebook reads these files by URL through a shared setup cell, trying the live CMS or CDC
-source first and falling back to this mirror. Each load is recorded in a provenance table the student can
-read.
+Every course notebook reads these files by URL through a shared setup cell. It loads a dated snapshot
+from this mirror (never the live CMS or CDC site, which can refuse scripted downloads or change mid-term)
+and records each load, including the snapshot date, in a provenance table the student can read.
 
     https://raw.githubusercontent.com/stevenelliottjr/healthcare-analytics-course-data/main/data/<file>
 
@@ -43,8 +43,9 @@ read.
 
 ### Refreshing the CMS mirror
 
-CMS refreshes Care Compare quarterly. Refresh the mirror before each term, and note the new snapshot
-date in the table above and in the notebooks' setup cell:
+CMS refreshes Care Compare quarterly. Refresh the mirror before each term, then update the snapshot date
+in the table above and in `MIRROR_SNAPSHOT` in the setup cell of every notebook in `course2027/notebooks/`
+(the cell is identical in each):
 
     python scripts/refresh_cms_mirror.py
     git add data/cms && git commit -m "Refresh CMS mirror" && git push

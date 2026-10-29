@@ -53,6 +53,8 @@ def _():
     CACHE.mkdir(exist_ok=True)
     # Course mirror on GitHub: a dated snapshot of every file the course uses.
     MIRROR = "https://raw.githubusercontent.com/stevenelliottjr/healthcare-analytics-course-data/main/data"
+    # Date each mirror folder was last refreshed from its publisher. Update these when you refresh the mirror.
+    MIRROR_SNAPSHOT = {"cms": "2026-10-26", "cdc": "2026-10-29", "course": "2026-10-29"}
     # For testing before files are pushed: point this at a local folder laid out like the mirror.
     LOCAL_MIRROR = os.environ.get("COURSE_DATA_LOCAL")
     UA = {"User-Agent": "healthcare-analytics-course/1.0"}
@@ -110,6 +112,7 @@ def _():
         PROVENANCE.append(dict(
             source=src["title"], publisher=src["publisher"], dataset_id=src["dataset_id"], grain=src["grain"],
             join_key=src["key"], source_page=src["page"], obtained_from=how,
+            mirror_snapshot=MIRROR_SNAPSHOT.get(src["mirror"].split("/")[0], "see the course mirror README"),
             loaded_at=dt.datetime.now().strftime("%Y-%m-%d %H:%M"), rows=len(df), columns=df.shape[1]))
         return df
 
@@ -298,8 +301,8 @@ def _(layer, own_card, upload):
 def _(column_info, data_card, layer, layer_name, provenance_table, upload):
     _cols = "\n".join(f"- {r.column}: {r.meaning}. Source: {r.source}. Period: {r.period}. Example: {r.example}"
                       for r in column_info.itertuples())
-    _prov = provenance_table()[["source", "dataset_id", "source_page", "obtained_from", "loaded_at"]]
-    _prov_txt = ("\n".join(f"- {r.source} ({r.dataset_id}), {r.source_page}, loaded {r.loaded_at} from {r.obtained_from}"
+    _prov = provenance_table()[["source", "dataset_id", "source_page", "obtained_from", "mirror_snapshot", "loaded_at"]]
+    _prov_txt = ("\n".join(f"- {r.source} ({r.dataset_id}), {r.source_page}, loaded {r.loaded_at} from {r.obtained_from} (mirror snapshot {r.mirror_snapshot})"
                            for r in _prov.itertuples()) if not upload.value
                  else "- See the data card above; this layer was built by the student.")
     _sample = layer.head(3).to_csv(index=False)

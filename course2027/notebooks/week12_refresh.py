@@ -50,6 +50,8 @@ def _():
     CACHE.mkdir(exist_ok=True)
     # Course mirror on GitHub: a dated snapshot of every file the course uses.
     MIRROR = "https://raw.githubusercontent.com/stevenelliottjr/healthcare-analytics-course-data/main/data"
+    # Date each mirror folder was last refreshed from its publisher. Update these when you refresh the mirror.
+    MIRROR_SNAPSHOT = {"cms": "2026-10-26", "cdc": "2026-10-29", "course": "2026-10-29"}
     # For testing before files are pushed: point this at a local folder laid out like the mirror.
     LOCAL_MIRROR = os.environ.get("COURSE_DATA_LOCAL")
     UA = {"User-Agent": "healthcare-analytics-course/1.0"}
@@ -107,6 +109,7 @@ def _():
         PROVENANCE.append(dict(
             source=src["title"], publisher=src["publisher"], dataset_id=src["dataset_id"], grain=src["grain"],
             join_key=src["key"], source_page=src["page"], obtained_from=how,
+            mirror_snapshot=MIRROR_SNAPSHOT.get(src["mirror"].split("/")[0], "see the course mirror README"),
             loaded_at=dt.datetime.now().strftime("%Y-%m-%d %H:%M"), rows=len(df), columns=df.shape[1]))
         return df
 
