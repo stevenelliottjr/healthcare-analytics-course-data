@@ -12,6 +12,9 @@ Business). Lab notebooks read these files by URL:
 | `data/cms/cms_hrrp.csv` | Labs 2, 5, 6, 12 | Mirror of the Hospital Readmissions Reduction Program file (`9n3s-kdb3`), performance period 07/2021–06/2024 |
 | `data/cms/cms_unplanned_visits.csv` | Labs 2, 4, 9–11 | Mirror of Unplanned Hospital Visits (`632h-zaca`); readmission measures cover 07/2023–06/2025 |
 | `data/cms/cms_inpatient_690ddc6c_drg291.csv` | Lab 7 | Medicare Inpatient Hospitals by Provider and Service, data year 2024, DRG 291 only (2,587 hospitals) |
+| `data/cdc/cdc_places_county.csv` | 2027 course, weeks 2–12 | CDC PLACES county data, 2025 release (`swc5-untb`), data year 2023: 10 measures (DIABETES, OBESITY, CSMOKING, BPHIGH, COPD, CHD, DEPRESSION, ACCESS2, CHECKUP, LPA), crude and age-adjusted. Kentucky and Pennsylvania have none of these measures in this release. Extracted 2026-10-29 |
+| `data/cdc/cdc_acs_county_measures.csv` | 2027 course, weeks 2–12 | CDC Non-Medical Factor Measures for County (`i6u4-y3g4`), from the Census ACS 5-year 2017–2021: 9 measures, 3,143 counties (old Connecticut counties). Extracted 2026-10-29 |
+| `data/course/hospital_county_crosswalk.csv` | 2027 course, weeks 3–12 | Course-built crosswalk from CMS Facility ID to 5-digit county FIPS, matched on state + county name: 5,338 of 5,419 matched; 65 territories not in the CDC county files; 16 to check by hand (CMS spelling errors) |
 
 ## The CMS mirror
 
